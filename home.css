@@ -1,0 +1,110 @@
+#header {
+	background: rgb(7, 0, 126);
+	background: linear-gradient(114deg, rgba(7, 0, 126, 1) 0%, rgba(16, 188, 223, 1) 100%);
+	padding: 20px;
+	text-align: center;
+	box-shadow: 1.3px 2.8px 1.9px rgba(0, 0, 0, 0.018), 3.1px 6.4px 4.3px rgba(0, 0, 0, 0.026),
+		5.6px 11.5px 7.7px rgba(0, 0, 0, 0.032), 9.3px 19.1px 12.8px rgba(0, 0, 0, 0.038),
+		15.3px 31.5px 21.2px rgba(0, 0, 0, 0.044), 26.8px 55px 37px rgba(0, 0, 0, 0.052),
+		58px 119px 80px rgba(0, 0, 0, 0.07);
+	font-family: sans-serif;
+	color: white;
+	position: sticky;
+	top: 0px;
+}
+body {
+	margin: 0px;
+	background-color: rgb(237, 242, 247);
+	text-align: center;
+	overflow-x: hidden;
+}
+#safetyNotice {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 13px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 0px 10000px rgba(0, 0, 0, 0.5);
+	z-index: 99;
+}
+#safetyNotice h1 {
+	font-size: 40px;
+	font-family: sans-serif;
+}
+#safetyNotice li {
+	font-size: 20px;
+	font-family: 'domineregular', sans-serif;
+	text-align: left;
+}
+#safetyNotice canvas {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+body h2 {
+	font-family: sans-serif;
+}
+body a {
+	font-family: 'domineregular', sans-serif;
+	color: blue;
+	text-decoration: underline;
+	cursor: pointer;
+}
+body a:visited {
+	color: blue;
+}
+#cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	z-index: 100;
+}
+.hidden {
+	display: none;
+}
+#hideButton {
+	font-family: 'domineregular', sans-serif;
+	font-size: 20px;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	background-color: rgb(71, 255, 71);
+	border-radius: 5px;
+	padding: 10px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	cursor: pointer;
+	z-index: 98;
+}
+#redirectButton {
+	font-family: 'domineregular', sans-serif;
+	font-size: 20px;
+	position: fixed;
+	top: 50%;
+	right: 0;
+	background-color: rgb(255, 71, 71);
+	border-radius: 5px;
+	padding: 10px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	cursor: pointer;
+	z-index: 98;
+}
+a:not(:last-child)::after {
+	display: inline;
+	content: ' |';
+	color: black;
+	text-decoration: none;
+	font-family: sans-serif;
+}
+/* * {
+	font-family: 'domineregular', sans-serif;
+} */
