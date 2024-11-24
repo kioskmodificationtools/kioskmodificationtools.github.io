@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kiosk Modification Tools</title>
+		<title>Kiosk Exploits</title>
 		<link rel="stylesheet" href="domineFont.css" />
 		<link rel="stylesheet" href="home.css" />
 	</head>
@@ -14,7 +14,7 @@
 			<h1>Safety Options</h1>
 			<ul>
 				<li>Press ESC at any time to toggle a white screen.</li>
-				<li>Press backspace to set this tab to about:blank.</li>
+				<li>Press ALT to set this tab to about:blank.</li>
 				<li>
 					You can also tap the corresponding buttons on the left and right sides of the
 					page.
@@ -34,17 +34,26 @@
 			<a href="file:///C:/" target="_blank">C Drive (New Tab)</a>
 			<a href="file:///C:/" target="_self">C Drive (Same Tab)</a>
 		</span>
+		<h2>Open Apps</h2>
+		<span>
+			<a href="ms-settings://">Open Settings</a>
+			<a href="ms-windows-store://">Open Microsoft Store</a>
+			<a href="ms-windows-store://pdp/?ProductId=9nxp44l49shj"
+				>Open Microsoft Store to Minecraft</a
+			>
+			<a href="mailto://">Open Default Mail Client</a>
+		</span>
 		<h2>CMD</h2>
 		<span>
 			<a href="cmdFiles/cmd.exe" download>cmd.exe</a>
 			<a href="cmdFiles/cmd.zip" download>cmd.zip</a>
-			<a href="cmdFiles/cmd" download>cmd file</a>
+			<a href="cmdFiles/cmd" download>cmd file (no file extension)</a>
 		</span>
 		<h2>File Explorer</h2>
 		<span>
 			<a href="explorerFiles/explorer.exe" download>explorer.exe</a>
 			<a href="explorerFiles/explorer.zip" download>explorer.zip</a>
-			<a href="explorer" download>explorer file</a>
+			<a href="explorerFiles/explorer" download>explorer file (no file extension)</a>
 		</span>
 		<h2>Open File Dialog</h2>
 		<input type="file" />
@@ -52,15 +61,33 @@
 		<span>
 			<a onclick="window.print()">Print</a>
 		</span>
-		<h2>Browser (COMING SOON!)</h2>
+		<h2>Induce Crash</h2>
 		<span>
-			<a href="">Coming Soon!</a>
+			<a href="javascript:forceCrash(-1)">Induce Crash (forever)</a>
+			<a href="javascript:forceCrash(30)">Induce Crash (30 seconds)</a>
+			<a href="javascript:forceCrash(prompt('how long should the loop run for?'))"
+				>Induce Crash (specified time)</a
+			>
+		</span>
+		<h2>'Min' Browser</h2>
+		<span>
+			<a href="min-1.32.1-setup.exe" download>Min Installer</a>
 		</span>
 		<h2>Minecraft</h2>
 		<span>
-			<a href="https://aka.ms/minecraftClientGameCoreWindows" download>MINECRAFT!!!! Installer</a>
+			<a href="https://aka.ms/minecraftClientGameCoreWindows" download>Minecraft Installer</a>
 		</span>
-
+		<div class="popup">
+			<div id="execHeader"><h2>Execute Javascript Code</h2></div>
+			<div id="execOutput"></div>
+			<div id="execInput">
+				<form action="javascript:execute()">
+					<input type="text" />
+				</form>
+			</div>
+		</div>
+		<br />
+		<br />
 		<script src="main.js"></script>
 	</body>
 </html>
