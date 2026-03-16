@@ -35,6 +35,7 @@ header {
     position: sticky;
     top: 0;
     box-shadow: 0px 6px 19px -9px #848484;
+    z-index: 98;
 }
 #hideButton {
     font-family: 'domineregular', sans-serif;
@@ -56,7 +57,7 @@ header {
 }
 
 #safetyNotice {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -64,7 +65,7 @@ header {
     padding: 13px;
     border-radius: 5px;
     box-shadow: 0px 0px 0px 10000px rgba(0, 0, 0, 0.5);
-    z-index: 99;
+    z-index: 97;
 }
 #safetyNotice h1 {
     font-size: 40px;
@@ -75,12 +76,13 @@ header {
     font-family: 'domineregular', sans-serif;
     text-align: left;
 }
-#safetyNotice canvas {
+canvas {
     width: 100vw;
     height: 100vh;
     position: absolute;
     top: 50%;
     left: 50%;
+    z-index: -1;
     transform: translate(-50%, -50%);
 }
 
@@ -93,6 +95,155 @@ header {
     overflow: hidden;
     background-color: white;
     z-index: 100;
+}
+
+#console {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border-radius: 8px;
+    z-index: 97;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 0px 10000px rgba(0, 0, 0, 0.5);
+}
+#console nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding: 7px;
+    background: #1943cf;
+    background: linear-gradient(114deg,rgba(25, 67, 207, 1) 0%, rgba(68, 242, 219, 1) 100%);
+    border-radius: 8px 8px 0 0;
+}
+#console nav * {
+    font-family: 'domineregular', sans-serif;
+    margin: 0;
+}
+#console nav #closeConsole {
+    font-family: monospace;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: auto;
+}
+#console nav #closeConsole:hover {
+    color: red;
+}
+#console nav label {
+    color: white;
+    user-select: none;
+}
+#console nav input {
+    width: 30px;
+    height: 14px;
+    position: relative;
+    cursor: pointer;
+}
+#console nav input::before {
+    content: '';
+    width: 30px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(227, 227, 227);
+    border-radius: 34px;
+    transition: 0.25s;
+}
+#console nav input:checked::before {
+    background-color: rgb(140, 140, 255);
+}
+#console nav input::after {
+    content: '';
+    height: 11px;
+    width: 11px;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    background-color: rgb(180, 180, 180);
+    transition: 0.25s;
+}
+#console nav input:checked::after {
+    background-color: rgb(23, 23, 255);
+    transform: translate(15px, -50%);
+}
+#editorContainer{
+    flex: 1;
+}
+#consoleLog {
+    flex: 1;
+    text-align: left;
+    font-family: monospace;
+    overflow: scroll;
+    padding: 5px;
+}
+#consoleLog p:not(:last-child) {
+    border-bottom: 1px solid grey;
+}
+#aceEditor{
+    width: 100%;
+    height: 100%;
+}
+#defaultEditor {
+    width: 100%;
+    height: 100%;
+    display: none;
+    resize: none;
+    border: none;
+    padding: 0;
+}
+#consoleFooter {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    font-family: 'domineregular', sans-serif;
+    overflow-wrap: break-word;
+    inline-size: min-content;
+    align-items: center;
+    width: calc(100% - 20px);
+}
+#consoleFooter #footerControls {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#consoleFooter p {
+    overflow-wrap: break-word;
+    min-width: 0;
+}
+#consoleOutput {
+    font-family: monospace;
+    flex: 1;
+    overflow-wrap: break-word;
+}
+
+#consoleHelp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 13px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 10000px rgba(0, 0, 0, 0.5);
+    z-index: 97;
+}
+#consoleHelp h1 {
+    font-size: 40px;
+    font-family: sans-serif;
+}
+#consoleHelp li {
+    font-size: 20px;
+    font-family: 'domineregular', sans-serif;
+    text-align: left;
 }
 
 .hidden {

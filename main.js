@@ -8,8 +8,10 @@ document.addEventListener('keyup', (event) => {
 });
 
 function hideSafetyNotice() {
-    if (document.getElementById('safetyNotice')) document.getElementById('safetyNotice').remove();
-    document.body.style.overflow = "initial";
+    if (document.getElementById('safetyNotice')) {
+	document.getElementById('safetyNotice').remove();
+	document.body.style.overflow = "initial";
+    }	
 }
 
 function handleKeys(event) {
@@ -50,4 +52,92 @@ function updateTelNumber() {
 
 function updateSmsNumber() {
     document.querySelector("#smsLink").href = "sms:" + document.querySelector("#smsNumber").value;
+}
+
+const aceEditor = ace.edit("aceEditor");
+aceEditor.setTheme("ace/theme/monokai");
+aceEditor.session.setMode("ace/mode/javascript");
+
+function changeEditor() {
+    const defaultEditor = document.querySelector("#defaultEditor")
+    const aceEditorElement = document.querySelector("#aceEditor");
+    if (document.querySelector("#enableEditor").checked) {
+	aceEditorElement.style.display = "block";
+	defaultEditor.style.display = "none";
+	aceEditor.setValue(defaultEditor.value);
+    } else {
+	aceEditorElement.style.display = "none";
+	defaultEditor.style.display = "block";
+	defaultEditor.value = aceEditor.getValue();
+    }
+    aceEditor.clearSelection();
+    if (displayingLog) toggleLog();
+}
+
+let consoleLog = [];
+function evalCode() {
+    consoleLog = [];
+    let evalText;
+    const outputElem = document.querySelector("#consoleOutput");
+    if (document.querySelector("#enableEditor").checked) {
+	evalText = aceEditor.getValue();
+    } else {
+	evalText = document.querySelector("#defaultEditor").value;
+    }
+    let output;
+    try {
+	outputElem.style.color = "initial";
+	output = new Function(evalText)();
+	
+    } catch (e) {
+	output = e;
+	outputElem.style.color = "red";
+    }
+    outputElem.textContent = output;
+    const logElem = document.querySelector("#consoleLog");
+    logElem.innerHTML = '<h3>Evaluation log</h3>';
+    consoleLog.forEach((i, idx) => {
+	let entry = document.createElement("p");
+	// Lazy ordered list
+	entry.textContent = (idx + 1) + ". " + i;
+	logElem.appendChild(entry);
+    });
+}
+
+function log(text) {
+    consoleLog.push(text);
+}
+let displayingLog = false;
+function toggleLog() {
+    const logElem = document.querySelector("#consoleLog");
+    const editorContainer = document.querySelector("#editorContainer");
+    if (displayingLog) {
+	logElem.style.display = 'none';
+	editorContainer.style.display = 'block';
+	document.querySelector("#viewLogButton").textContent = "View log";
+	displayingLog = false;
+    } else {
+	logElem.style.display = 'block';
+	editorContainer.style.display = 'none';
+	document.querySelector("#viewLogButton").textContent = "Hide log";
+	displayingLog = true;
+    }
+}
+
+function openConsole(){
+    document.querySelector("#console").style.display = "flex";
+    document.body.style.overflow = "hidden";
+}
+function closeConsole() {
+    document.querySelector("#console").style.display = "none";
+    document.body.style.overflow = "initial";
+}
+
+function showConsoleHelp() {
+    document.querySelector("#consoleHelp").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+function hideConsoleHelp() {
+    document.getElementById('consoleHelp').style.display = "none";
+    document.body.style.overflow = "initial";
 }

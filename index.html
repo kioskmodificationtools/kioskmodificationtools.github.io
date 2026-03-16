@@ -21,6 +21,40 @@
 	</li>
       </ul>
     </div>
+    <div id="consoleHelp" style="display: none;">
+      <canvas></canvas>
+      <h1>Console Help</h1>
+      <ul>
+	<li>Use the "advanced editor" toggle to enable or disable the Ace code editor.</li>
+	<li>Click "evaluate" to run all code in the editor.</li>
+	<li>Use return statements to create output.</li>
+	<li>Use the log() function to write to the log if viewing the console is infeasible.</li>
+	<li>Click the "view log" button to show/hide the log</li>.
+      </ul>
+      <button onclick="hideConsoleHelp()">Close</button>
+    </div>
+    <div id="console" style="display: none;">
+      <canvas></canvas>
+      <nav>
+	<label for="enableEditor">Advanced editor</label>
+	<input id="enableEditor" type="checkbox" checked="true" onchange="changeEditor()"></input>
+	<p id="closeConsole" onclick="closeConsole()">x</p>
+      </nav>
+      <div id="editorContainer">
+	<div id="aceEditor">// Enter javascript code here</div>
+	<textarea id="defaultEditor">// Enter javascript code here</textarea>
+      </div>
+      <div id="consoleLog" style="display: none;">
+	<h3>Evaluation log</h3>
+      </div>
+      <div id="consoleFooter">
+	<div id="footerControls">
+	  <button onclick="evalCode()">Evaluate</button>
+	  <button onclick="toggleLog()" id="viewLogButton">View log</button>
+	</div>
+	<p>Output: <span id="consoleOutput"></span> </p>
+      </div>
+    </div>
 
     <header>
       <h1>Kiosk Modification Tools</h1>
@@ -36,10 +70,13 @@
       <a href="javascript:newWindowUnique()">New window (unique)</a>
     </span>
     
-    <h2>Open File Dialog</h2>
+    <h2>Files</h2>
     <input type="file" />
+    <br/>
+    <br/>
+    <button onclick="showSaveFilePicker()">Save file</button>
     
-    <h2>Open Print Dialog</h2>
+    <h2>Print Dialog</h2>
     <span>
       <a onclick="window.print()">Print</a>
     </span>
@@ -52,6 +89,10 @@
       <a href="macappstore:">Mac/iOS app store</a>
       <a href="shareddocuments://">iOS File Browser</a>
     </span>
+
+    <h2>Evaluate Javascript</h2>
+    <button onclick="openConsole()">Open console</button>
+    <button onclick="showConsoleHelp()">Console help</button>
 
     <h2>Input Field</h2>
     <textarea id="inputField" cols="30" id="" name="" rows="1"></textarea>
@@ -96,6 +137,7 @@
     <br/>
     <br/>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/ace.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
