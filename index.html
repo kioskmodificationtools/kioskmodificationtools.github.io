@@ -1,66 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kiosk Modification Tools</title>
-		<link rel="stylesheet" href="domineFont.css" />
-		<link rel="stylesheet" href="home.css" />
-	</head>
-	<body>
-		<div id="cover" class="hidden"></div>
-		<div id="safetyNotice">
-			<canvas></canvas>
-			<h1>Safety Options</h1>
-			<ul>
-				<li>Press ESC at any time to toggle a white screen.</li>
-				<li>Press backspace to set this tab to about:blank.</li>
-				<li>
-					You can also tap the corresponding buttons on the left and right sides of the
-					page.
-				</li>
-			</ul>
-		</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiosk Modification Tools</title>
+    <link rel="stylesheet" href="domineFont.css" />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body style="overflow: hidden;">
+    <div id="cover" class="hidden"></div>
+    <div id="safetyNotice">
+      <canvas></canvas>
+      <h1>Safety Options</h1>
+      <ul>
+	<li>Press ESC at any time to toggle a white screen.</li>
+	<li>Press shift + backspace to set this tab to about:blank.</li>
+	<li>
+	  You can also tap the corresponding buttons on the top of the
+	  page.
+	</li>
+      </ul>
+    </div>
 
-		<div id="hideButton" onclick="hide()">Hide screen for 2 minutes</div>
-		<div id="redirectButton" onclick="window.location = 'about:blank'">Go to about:blank</div>
+    <header>
+      <h1>Kiosk Modification Tools</h1>
+    </header>
+    <div id="topButtons">
+      <span id="hideButton" onclick="hide()">Hide screen for 2 minutes</span>
+      <span id="redirectButton" onclick="window.location = 'about:blank'">Go to about:blank</span>
+    </div>
+    <h2>Tabs and Popups</h2>
+    <span>
+      <a href="https://google.com" target="_blank">New tab</a>
+      <a href="javascript:newWindow()">New window</a>
+      <a href="javascript:newWindowUnique()">New window (unique)</a>
+    </span>
+    
+    <h2>Open File Dialog</h2>
+    <input type="file" />
+    
+    <h2>Open Print Dialog</h2>
+    <span>
+      <a onclick="window.print()">Print</a>
+    </span>
 
-		<div id="header">
-			<h1>Kiosk Modification Tools</h1>
-		</div>
-		<h2>Valuable Links</h2>
-		<span>
-			<a href="about:blank" target="_blank">Open New Tab</a>
-			<a href="file:///C:/" target="_blank">C Drive (New Tab)</a>
-			<a href="file:///C:/" target="_self">C Drive (Same Tab)</a>
-		</span>
-		<h2>CMD</h2>
-		<span>
-			<a href="cmdFiles/cmd.exe" download>cmd.exe</a>
-			<a href="cmdFiles/cmd.zip" download>cmd.zip</a>
-			<a href="cmdFiles/cmd" download>cmd file</a>
-		</span>
-		<h2>File Explorer</h2>
-		<span>
-			<a href="explorerFiles/explorer.exe" download>explorer.exe</a>
-			<a href="explorerFiles/explorer.zip" download>explorer.zip</a>
-			<a href="explorer" download>explorer file</a>
-		</span>
-		<h2>Open File Dialog</h2>
-		<input type="file" />
-		<h2>Open Print Dialog</h2>
-		<span>
-			<a onclick="window.print()">Print</a>
-		</span>
-		<h2>Browser (COMING SOON!)</h2>
-		<span>
-			<a href="">Coming Soon!</a>
-		</span>
-		<h2>Minecraft</h2>
-		<span>
-			<a href="https://aka.ms/minecraftClientGameCoreWindows" download>MINECRAFT!!!! Installer</a>
-		</span>
+    <h2>Open Apps</h2>
+    <span>
+      <a href="ms-settings:">Windows settings</a>
+      <a href="x-apple.systempreferences:">Mac settings</a>
+      <a href="ms-edge:google.com">Edge browser</a>
+      <a href="macappstore:">Mac/iOS app store</a>
+      <a href="shareddocuments://">iOS File Browser</a>
+    </span>
 
-		<script src="main.js"></script>
-	</body>
+    <h2>Input Field</h2>
+    <textarea id="inputField" cols="30" id="" name="" rows="1"></textarea>
+    <br/>
+    <button onclick="selectInput()">Select</button>
+    
+    <h2>Mail Link</h2>
+    <span>
+      <input type="text" placeholder="Address" id="mailAddress" oninput="updateMailAddress()"/>
+      <a href="mailto:kioskmodificationtools@gmail.com" id="mailLink">Mail</a>
+    </span>
+
+    <h2>Phone Link</h2>
+    <span>
+      <input type="tel" placeholder="Number" id="telNumber" oninput="updateTelNumber()"/>
+      <a id="telLink">Call</a>
+    </span>
+
+    <h2>SMS Link</h2>
+    <span>
+      <input type="tel" placeholder="Number" id="smsNumber" oninput="updateSmsNumber()"/>
+      <a id="smsLink">Text</a>
+    </span>
+    
+    <h2>CMD</h2>
+    <span>
+      <a href="cmdFiles/cmd.exe" download>cmd.exe</a>
+      <a href="cmdFiles/cmd.zip" download>cmd.zip</a>
+      <a href="cmdFiles/cmd" download>cmd file</a>
+    </span>
+    <h2>File Explorer</h2>
+    <span>
+      <a href="explorerFiles/explorer.exe" download>explorer.exe</a>
+      <a href="explorerFiles/explorer.zip" download>explorer.zip</a>
+      <a href="explorer" download>explorer file</a>
+    </span>
+    <h2>Minecraft</h2>
+    <span>
+      <a href="https://aka.ms/minecraftClientGameCoreWindows" download>Minecraft Installer</a>
+    </span>
+
+    <br/>
+    <br/>
+
+    <script src="main.js"></script>
+  </body>
 </html>
